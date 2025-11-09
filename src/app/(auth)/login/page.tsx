@@ -21,9 +21,9 @@ export default function Login() {
 
   return (
     <form onSubmit={handleLogin}>
-      <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-      <button type="submit">Login</button>
+      <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" className="text-gray-600" />
+      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password"  className="text-gray-600" />
+      <button type="submit" className="bg-gray-600">Login</button>
     </form>
   );
 }
