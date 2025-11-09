@@ -141,18 +141,18 @@ export default function Dashboard() {
     fetchTasks();
   };
 
-  const handleToggleComplete = async (id: string, completed: boolean) => {
-    if (!idToken) return;
-    await fetch(`${API_URL}/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${idToken}`,
-      },
-      body: JSON.stringify({ completed: !completed }),
-    });
-    fetchTasks();
-  };
+const handleToggleComplete = async (id: string, completed: boolean) => {
+  if (!idToken) return;
+  const res = await fetch(`${API_URL}/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${idToken}`,
+    },
+    body: JSON.stringify({ completed: !completed }),
+  });
+  if (res.ok) fetchTasks();
+};
 
   const handleLogout = async () => {
     await signOut(auth);
@@ -169,11 +169,11 @@ export default function Dashboard() {
         {/* HEADER */}
         <div className="mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
           <div>
-            <h1 className={`text-5xl font-bold mb-3 bg-gradient-to-r ${darkMode ? "from-cyan-400 to-blue-500" : "from-blue-600 to-cyan-600"} bg-clip-text text-transparent`}>
+            <h1 className={`text-5xl font-bold mb-3 bg-gradient-to-r ${darkMode ? "bg-gradient-to-r from-emerald-400 to-teal-400" : "bg-gradient-to-r from-emerald-600 to-teal-600"} bg-clip-text text-transparent`}>
               My Tasks
             </h1>
             <p className={`text-lg ${darkMode ? "text-slate-400" : "text-slate-600"}`}>
-              Welcome back, <span className="font-bold text-indigo-600">{user.email}</span>
+              Welcome back, <span className={`font-bold ${darkMode ? "text-emerald-400":"text-teal-600"}`}>{user.email}</span>
             </p>
             <p className={`text-sm ${darkMode ? "text-slate-500" : "text-slate-500"} flex items-center gap-2`}>
               <Calendar className="h-4 w-4" />
@@ -227,7 +227,7 @@ export default function Dashboard() {
                 className={`px-6 py-4 rounded-xl border-2 focus:outline-none focus:ring-4 focus:ring-blue-500 ${darkMode ? "bg-slate-700 border-slate-600 text-white" : "bg-slate-50 border-slate-200 text-slate-900"}`}>
                 <option>Low</option><option>Medium</option><option>High</option>
               </select>
-              <button type="submit" className="flex-1 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold py-4 rounded-xl shadow-xl transition-all flex items-center justify-center gap-3">
+              <button type="submit" className="flex-1 bg-gradient-to-r bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-400 hover:to-teal-400 text-white font-bold py-4 rounded-xl shadow-xl transition-all flex items-center justify-center gap-3">
                 <Plus className="h-6 w-6" />
                 {editingId ? "Update Task" : "Add Task"}
               </button>
@@ -262,7 +262,7 @@ export default function Dashboard() {
             </div>
           ) : (
             filteredTasks.map((task) => (
-              <div key={task.id} className={`p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all ${darkMode ? "bg-slate-800" : "bg-white"} border-l-8 ${task.status === "Completed" ? "border-emerald-500" : task.status === "Missed" ? "border-red-500" : "border-cyan-500"}`}>
+              <div key={task.id} className={`p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all ${darkMode ? "bg-slate-800" : "bg-white"} border-l-8 ${task.status === "Completed" ? "border-emerald-500" : task.status === "Missed" ? "border-red-500" : "border-teal-500"}`}>
                 <div className="flex items-start gap-5">
                   <input type="checkbox" checked={task.completed} onChange={() => handleToggleComplete(task.id, task.completed)}
                     className="mt-1 h-6 w-6 rounded border-2 text-blue-500 focus:ring-4 focus:ring-blue-500 cursor-pointer" />
@@ -289,7 +289,7 @@ export default function Dashboard() {
                     </div>
                   </div>
                   <div className="flex gap-3">
-                    <button onClick={() => handleEdit(task)} className="p-3 rounded-xl bg-blue-500 hover:bg-blue-600 text-white shadow-lg">
+                    <button onClick={() => handleEdit(task)} className="p-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg">
                       <Pencil className="h-5 w-5" />
                     </button>
                     <button onClick={() => handleDelete(task.id)} className="p-3 rounded-xl bg-red-500 hover:bg-red-600 text-white shadow-lg">

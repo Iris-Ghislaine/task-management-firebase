@@ -1,6 +1,6 @@
+// src/app/api/tasks/route.ts
 import { adminAuth } from "@/app/lib/admin";
 import { db } from "@/app/lib/firebase";
-import { Task } from "@/app/types";
 import { addDoc, collection, query, where, getDocs } from "firebase/firestore";
 import { NextResponse } from "next/server";
 
@@ -22,15 +22,10 @@ export async function GET(req: Request) {
 
   const q = query(collection(db, "tasks"), where("userEmail", "==", userEmail));
   const snapshot = await getDocs(q);
-  const tasks = snapshot.docs.map((doc) => {
-    const data = doc.data();
-    return {
-      id: doc.id,
-      ...data,
-      createdAt: data.createdAt || new Date().toISOString(),
-      updatedAt: data.updatedAt || new Date().toISOString(),
-    } as Task;
-  });
+  const tasks = snapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
 
   return NextResponse.json(tasks);
 }
@@ -58,7 +53,7 @@ export async function POST(req: Request) {
     ...body,
     userEmail,
     completed: false,
-    createdAt: body.editingId ? body.createdAt || now : now,
+    createdAt: body.createdAt || now,
     updatedAt: now,
   };
 
