@@ -46,12 +46,12 @@ export default function Dashboard() {
     }
   };
 
-  // Now it's safe to call fetchTasks()
+  
   useEffect(() => {
     if (!loading && !user) {
       router.push("/login");
     } else if (user) {
-      fetchTasks(); // ← No more error!
+      fetchTasks(); 
     }
   }, [user, loading, router]);
 
