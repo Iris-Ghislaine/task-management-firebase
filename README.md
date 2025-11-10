@@ -100,8 +100,9 @@ FIREBASE_PROJECT_ID=your_project_id
 ### Installation
 
 ```npm install```
-```npm run dev```
+### To run the project
 
+```npm run dev```
 App runs at: ```http://localhost:3000```
 
 ### Deployment 
