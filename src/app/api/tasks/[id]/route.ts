@@ -10,14 +10,13 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const token = authToken.split("Bearer ")[1];
+  const token = authHeader.split("Bearer ")[1];
   try {
     await adminAuth.verifyIdToken(token);
   } catch (error) {
     return NextResponse.json({ error: "Invalid token" }, { status: 401 });
   }
 
-  // AWAIT params — this is the fix!
   const { id } = await params;
   if (!id) {
     return NextResponse.json({ error: "Task ID required" }, { status: 400 });

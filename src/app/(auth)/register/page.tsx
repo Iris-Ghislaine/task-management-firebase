@@ -40,7 +40,7 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-white to-cyan-50 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* CARD */}
         <div className="bg-white rounded-3xl shadow-2xl p-10 border border-slate-100 relative">
@@ -124,12 +124,6 @@ export default function Register() {
                 Sign in here
               </Link>
             </p>
-          </div>
-          <div className="mt-10 flex items-center justify-center gap-3 text-sm text-slate-500 bg-slate-50 rounded-xl p-4">
-            <Lightbulb className="h-5 w-5 text-yellow-500" />
-            <span>
-              <strong>Demo Account:</strong> demo@gmail.com / 123456
-            </span>
           </div>
         </div>
       </div>

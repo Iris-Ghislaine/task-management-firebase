@@ -28,7 +28,7 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-white to-cyan-50 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* CARD */}
         <div className="bg-white rounded-3xl shadow-2xl p-10 border border-slate-100">
@@ -55,7 +55,7 @@ export default function Login() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email address"
                 required
-                className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all text-lg placeholder-slate-500"
+                className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-slate-200 focus:border-teal-500 focus:ring-4 focus:ring-teal-100 transition-all text-lg placeholder-slate-500"
               />
             </div>
 
@@ -67,14 +67,14 @@ export default function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
                 required
-                className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all text-lg placeholder-slate-500"
+                className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-slate-200 focus:border-teal-500 focus:ring-4 focus:ring-teal-100 transition-all text-lg placeholder-slate-500"
               />
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-blue-600 hover:to-cyan-600 text-white font-bold py-4 rounded-xl shadow-xl transition-all transform hover:scale-105 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-3 text-lg"
+              className="w-full bg-gradient-to-r bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-teal-600 hover:to-cyan-600 text-white font-bold py-4 rounded-xl shadow-xl transition-all transform hover:scale-105 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-3 text-lg"
             >
               {loading ? (
                 <span>Loading...</span>
@@ -98,12 +98,6 @@ export default function Login() {
                 Create one here
               </Link>
             </p>
-          </div>
-
-          {/* TIP */}
-          <div className="mt-10 flex items-center justify-center gap-3 text-sm text-slate-500">
-            <Lightbulb className="h-5 w-5 text-yellow-500" />
-            <span>Test account: demo@gmail.com / 123456</span>
           </div>
         </div>
       </div>

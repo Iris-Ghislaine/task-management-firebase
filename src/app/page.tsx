@@ -36,7 +36,7 @@ export default function Dashboard() {
   const [darkMode, setDarkMode] = useState(false);
   const [search, setSearch] = useState("");
   const [filterPriority, setFilterPriority] = useState<"All" | "Low" | "Medium" | "High">("All");
-  const [showStats, setShowStats] = useState(true);
+ 
 
   const API_URL = "/api/tasks";
 
@@ -163,7 +163,7 @@ const handleToggleComplete = async (id: string, completed: boolean) => {
   if (!user) return null;
 
   return (
-    <div className={`min-h-screen transition-all duration-500 ${darkMode ? "bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" : "bg-gradient-to-br from-blue-50 via-white to-cyan-50"}`}>
+    <div className={`min-h-screen transition-all duration-500 ${darkMode ? "bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" : "bg-gradient-to-br from-teal-50 via-white to-cyan-50"}`}>
       <div className="max-w-5xl mx-auto p-4 sm:p-6 lg:p-8">
 
         {/* HEADER */}
@@ -181,9 +181,7 @@ const handleToggleComplete = async (id: string, completed: boolean) => {
             </p>
           </div>
           <div className="flex gap-3">
-            <button onClick={() => setShowStats(!showStats)} className={`p-3 rounded-xl font-medium transition-all ${darkMode ? "bg-slate-700 hover:bg-slate-600 text-cyan-400" : "bg-white hover:bg-slate-50 text-slate-700 shadow-lg"}`}>
-              <PieChart className="h-6 w-6" />
-            </button>
+           
             <button onClick={() => setDarkMode(!darkMode)} className={`p-3 rounded-xl transition-all ${darkMode ? "bg-slate-700 hover:bg-slate-600 text-yellow-400" : "bg-white hover:bg-slate-50 text-slate-700 shadow-lg"}`}>
               {darkMode ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
             </button>
@@ -193,38 +191,20 @@ const handleToggleComplete = async (id: string, completed: boolean) => {
           </div>
         </div>
 
-        {/* STATS */}
-        {showStats && (
-          <div className="mb-8 grid grid-cols-2 sm:grid-cols-5 gap-4">
-            {[
-              { label: "Total", value: stats.total, color: "blue" },
-              { label: "Done", value: stats.completed, color: "emerald" },
-              { label: "Pending", value: stats.pending, color: "amber" },
-              { label: "Missed", value: stats.missed, color: "red" },
-              { label: "High", value: stats.high, color: "rose" },
-            ].map((stat) => (
-              <div key={stat.label} className={`p-5 rounded-2xl ${darkMode ? "bg-slate-800" : "bg-white shadow-xl"}`}>
-                <div className={`text-3xl font-bold text-${stat.color}-500`}>{stat.value}</div>
-                <div className={`text-sm ${darkMode ? "text-slate-400" : "text-slate-600"}`}>{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        )}
-
         {/* ADD TASK FORM */}
         <div className={`p-8 rounded-2xl mb-8 shadow-2xl ${darkMode ? "bg-slate-800" : "bg-white"}`}>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="What needs to be done?" required
-                className={`px-6 py-4 rounded-xl border-2 focus:outline-none focus:ring-4 focus:ring-blue-500 transition-all text-lg ${darkMode ? "bg-slate-700 border-slate-600 text-white placeholder-slate-400" : "bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-500"}`} />
+                className={`px-6 py-4 rounded-xl border-2 focus:outline-none focus:ring-4 focus:ring-teal-500 transition-all text-lg ${darkMode ? "bg-slate-700 border-slate-600 text-white placeholder-slate-400" : "bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-500"}`} />
               <input type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)}
-                className={`px-6 py-4 rounded-xl border-2 focus:outline-none focus:ring-4 focus:ring-blue-500 ${darkMode ? "bg-slate-700 border-slate-600 text-white" : "bg-slate-50 border-slate-200 text-slate-900"}`} />
+                className={`px-6 py-4 rounded-xl border-2 focus:outline-none focus:ring-4 focus:ring-teal-500 ${darkMode ? "bg-slate-700 border-slate-600 text-white" : "bg-slate-50 border-slate-200 text-slate-900"}`} />
             </div>
             <textarea value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Add description..." required rows={3}
-              className={`w-full px-6 py-4 rounded-xl border-2 focus:outline-none focus:ring-4 focus:ring-blue-500 transition-all text-lg ${darkMode ? "bg-slate-700 border-slate-600 text-white placeholder-slate-400" : "bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-500"}`} />
+              className={`w-full px-6 py-4 rounded-xl border-2 focus:outline-none focus:ring-4 focus:ring-teal-500 transition-all text-lg ${darkMode ? "bg-slate-700 border-slate-600 text-white placeholder-slate-400" : "bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-500"}`} />
             <div className="flex gap-4">
               <select value={priority} onChange={(e) => setPriority(e.target.value as any)}
-                className={`px-6 py-4 rounded-xl border-2 focus:outline-none focus:ring-4 focus:ring-blue-500 ${darkMode ? "bg-slate-700 border-slate-600 text-white" : "bg-slate-50 border-slate-200 text-slate-900"}`}>
+                className={`px-6 py-4 rounded-xl border-2 focus:outline-none focus:ring-4 focus:ring-teal-500 ${darkMode ? "bg-slate-700 border-slate-600 text-white" : "bg-slate-50 border-slate-200 text-slate-900"}`}>
                 <option>Low</option><option>Medium</option><option>High</option>
               </select>
               <button type="submit" className="flex-1 bg-gradient-to-r bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-400 hover:to-teal-400 text-white font-bold py-4 rounded-xl shadow-xl transition-all flex items-center justify-center gap-3">
@@ -241,10 +221,10 @@ const handleToggleComplete = async (id: string, completed: boolean) => {
             <div className="flex-1 relative">
               <Search className={`absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 ${darkMode ? "text-slate-400" : "text-slate-500"}`} />
               <input type="text" placeholder="Search tasks..." value={search} onChange={(e) => setSearch(e.target.value)}
-                className={`w-full pl-12 pr-4 py-4 rounded-xl border-2 focus:outline-none focus:ring-4 focus:ring-blue-500 ${darkMode ? "bg-slate-700 border-slate-600 text-white placeholder-slate-400" : "bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-500"}`} />
+                className={`w-full pl-12 pr-4 py-4 rounded-xl border-2 focus:outline-none focus:ring-4 focus:ring-teal-500 ${darkMode ? "bg-slate-700 border-slate-600 text-white placeholder-slate-400" : "bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-500"}`} />
             </div>
             <select value={filterPriority} onChange={(e) => setFilterPriority(e.target.value as any)}
-              className={`px-6 py-4 rounded-xl border-2 focus:outline-none focus:ring-4 focus:ring-blue-500 ${darkMode ? "bg-slate-700 border-slate-600 text-white" : "bg-slate-50 border-slate-200 text-slate-900"}`}>
+              className={`px-6 py-4 rounded-xl border-2 focus:outline-none focus:ring-4 focus:ring-teal-500 ${darkMode ? "bg-slate-700 border-slate-600 text-white" : "bg-slate-50 border-slate-200 text-slate-900"}`}>
               <option value="All">All Priorities</option>
               <option>High</option><option>Medium</option><option>Low</option>
             </select>
@@ -265,7 +245,7 @@ const handleToggleComplete = async (id: string, completed: boolean) => {
               <div key={task.id} className={`p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all ${darkMode ? "bg-slate-800" : "bg-white"} border-l-8 ${task.status === "Completed" ? "border-emerald-500" : task.status === "Missed" ? "border-red-500" : "border-teal-500"}`}>
                 <div className="flex items-start gap-5">
                   <input type="checkbox" checked={task.completed} onChange={() => handleToggleComplete(task.id, task.completed)}
-                    className="mt-1 h-6 w-6 rounded border-2 text-blue-500 focus:ring-4 focus:ring-blue-500 cursor-pointer" />
+                    className="mt-1 h-6 w-6 rounded border-2 text-teal-500 focus:ring-4 focus:ring-teal-500 cursor-pointer" />
                   <div className="flex-1">
                     <h3 className={`text-xl font-bold mb-2 ${task.completed ? "line-through text-gray-500" : darkMode ? "text-white" : "text-slate-900"}`}>
                       {task.title}
