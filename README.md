@@ -90,7 +90,8 @@ Authorization: Bearer <idToken>
 
 ### SignIn page
 
-<img width="541" height="726" alt="image" src="https://github.com/user-attachments/assets/43a22b98-50c4-46bb-9624-15b06b432fe2" />
+<img width="1662" height="877" alt="image" src="https://github.com/user-attachments/assets/369a05bd-1dd1-4e15-9dae-6555ba45615d" />
+
 ### Landing page
 
 <img width="1248" height="849" alt="image" src="https://github.com/user-attachments/assets/8fbaae57-fd55-4c5d-9ea3-058c150c02e3" />
