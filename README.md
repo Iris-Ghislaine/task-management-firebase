@@ -113,6 +113,6 @@ Authorization: Bearer <idToken>
 App runs at: ```http://localhost:3000```
 
 ### Deployment 
-Live Demo : 
+Live Demo : ```https://task-management-firebase.netlify.app/```
 
 
