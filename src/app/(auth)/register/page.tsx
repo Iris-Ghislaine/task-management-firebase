@@ -72,19 +72,19 @@ export default function Register() {
           {/* FORM */}
           <form onSubmit={handleRegister} className="space-y-6">
             <div className="relative">
-              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
+              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-700" />
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email address"
                 required
-                className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-slate-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 transition-all text-lg placeholder-slate-500"
+                className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-slate-200 hover:border-emerald-500  hover:ring-emerald-100 transition-all text-lg placeholder-gray-500 text-gray-600"
               />
             </div>
 
             <div className="relative">
-              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
+              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-700" />
               <input
                 type="password"
                 value={password}
@@ -92,7 +92,7 @@ export default function Register() {
                 placeholder="Password (6+ characters)"
                 required
                 minLength={6}
-                className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-slate-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 transition-all text-lg placeholder-slate-500"
+                className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-slate-200 hover:border-emerald-500  hover:ring-emerald-100 transition-all text-lg placeholder-gray-500 text-gray-600"
               />
             </div>
 
